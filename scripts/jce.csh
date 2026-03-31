@@ -1,5 +1,6 @@
 #!/bin/csh -f
 
+# jce.csh: (bash equivalent: jce.sh)
 # jce.csh:
 # Wrapper around jana that ensures:
 #   - evio_parser is always first in -Pplugins

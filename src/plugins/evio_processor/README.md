@@ -134,10 +134,10 @@ All parameters are set on the JANA2 command line with `-P<name>=<value>`.
 
 ## Example Usage
 
-Using [scripts/jce.csh](../../../README.md#basic-usage):
+Using the JCE wrapper ([`jce.sh`](../../../scripts/jce.sh) or [`jce.csh`](../../../scripts/jce.csh); see [Basic usage](../../../README.md#basic-usage)):
 
 ```bash
-scripts/jce.csh -Pplugins=evio_processor data.evio
+scripts/jce.sh -Pplugins=evio_processor data.evio
 ```
 
 Produces `evio_processor.root` and `evio_processor_hits.txt` in the current directory.
@@ -145,11 +145,11 @@ Produces `evio_processor.root` and `evio_processor_hits.txt` in the current dire
 ### Custom ROOT output filename
 
 ```bash
-scripts/jce.csh -Pplugins=evio_processor -PROOT_OUT_FILENAME=run_042.root data.evio
+scripts/jce.sh -Pplugins=evio_processor -PROOT_OUT_FILENAME=run_042.root data.evio
 ```
 
 ### With filtering and custom mapping
 
 ```bash
-scripts/jce.csh -Pplugins=evio_processor -PFILTER:ENABLE=1 -PFILTER:FILE=config/filter.db -PBANKMAP:FILE=config/mapping.db -PROOT_OUT_FILENAME=run_042_filtered.root data.evio
+scripts/jce.sh -Pplugins=evio_processor -PFILTER:ENABLE=1 -PFILTER:FILE=config/filter.db -PBANKMAP:FILE=config/mapping.db -PROOT_OUT_FILENAME=run_042_filtered.root data.evio
 ```

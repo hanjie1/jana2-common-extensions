@@ -168,7 +168,7 @@ jana -Pplugins=evio_parser,evio_processor -PFILTER:ENABLE=1 -PFILTER:FILE=/path/
 ```
 
 
-> These examples use `jana` directly. If you are using the [jce.csh](../../../README.md#basic-usage) wrapper, the same parameters can be passed through it.
+> These examples use `jana` directly. If you are using the [jce.sh / jce.csh](../../../README.md#basic-usage) wrapper, the same parameters can be passed through it.
 
 ## Environment Variables
 

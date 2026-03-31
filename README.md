@@ -94,19 +94,24 @@ lib/
     ├── evio_processor.so
     └── ...
 scripts/
-└── jce.csh
+├── jce.csh
+└── jce.sh
 templates/
 ```
 
 ## Basic Usage
 
-The recommended entry point is the wrapper script:
+The recommended entry point is one of the wrapper scripts (equivalent behavior; use whichever matches your shell):
 
 ```tcsh
 scripts/jce.csh
 ```
 
-This script:
+```bash
+scripts/jce.sh
+```
+
+These scripts:
 
 * Prepends the JCE plugin path
 * Loads default plugins automatically
@@ -119,12 +124,21 @@ setenv JCE_HOME /path/to/jana2-common-extensions
 setenv JANA_HOME /path/to/JANA2
 ```
 
+```bash
+export JCE_HOME=/path/to/jana2-common-extensions
+export JANA_HOME=/path/to/JANA2
+```
+
 > With the default setup (`-DCMAKE_INSTALL_PREFIX=\`pwd\``), set `JCE_HOME` to the project root.
 
 ### Run with Default Plugins
 
 ```tcsh
 ${JCE_HOME}/scripts/jce.csh /path/to/data.evio
+```
+
+```bash
+"${JCE_HOME}/scripts/jce.sh" /path/to/data.evio
 ```
 
 * Uses plugins from [default_plugins.db](#default-plugins)
@@ -135,6 +149,10 @@ ${JCE_HOME}/scripts/jce.csh /path/to/data.evio
 
 ```tcsh
 ${JCE_HOME}/scripts/jce.csh -Pplugins=evio_processor,my_custom_plugin /path/to/data.evio
+```
+
+```bash
+"${JCE_HOME}/scripts/jce.sh" -Pplugins=evio_processor,my_custom_plugin /path/to/data.evio
 ```
 
 ### Using Plugins from External Directories
@@ -150,6 +168,10 @@ You can:
 
 ```tcsh
 ${JCE_HOME}/scripts/jce.csh -Pjana:plugin_path=/my/custom/plugins -Pplugins=my_custom_plugin /path/to/data.evio
+```
+
+```bash
+"${JCE_HOME}/scripts/jce.sh" -Pjana:plugin_path=/my/custom/plugins -Pplugins=my_custom_plugin /path/to/data.evio
 ```
 
 #### Notes
@@ -184,7 +206,7 @@ Configuration files are installed under:
 |----------------------|-----------------------------------|------------------------|
 | `mapping.db`         | Maps EVIO banks to module IDs     | `src/plugins/evio_parser` |
 | `filter.db`          | Defines ROC/bank filtering rules  | `src/plugins/evio_parser` |
-| `default_plugins.db` | Specifies default plugins to load | `scripts/jce.csh`     |
+| `default_plugins.db` | Specifies default plugins to load | `scripts/jce.csh`, `scripts/jce.sh` |
 
 At runtime, configuration files are resolved using the following precedence:
 

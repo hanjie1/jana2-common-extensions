@@ -198,11 +198,10 @@ cmake --build build --parallel
 cmake --install build
 ```
 
-Load the plugin using [jce.csh](../../scripts/jce.csh)
+Load the plugin using [`jce.sh`](../../scripts/jce.sh) or [`jce.csh`](../../scripts/jce.csh)
 
 ```bash
-
-scripts/jce.csh -Pplugins=my_plugin /path/to/data.evio
+scripts/jce.sh -Pplugins=my_plugin /path/to/data.evio
 ```
 
 ---
