@@ -40,7 +40,9 @@ that provide their own dependencies.
   the discovered LZ4 header directory. The patch also installs EVIO’s bundled
   `.hpp` headers required by its public C++ headers. For offline builds, EVIO
   is first copied into the superbuild workspace so the original checkout is
-  not modified.
+  not modified. The patch clears `CODA` from EVIO's configure environment so
+  EVIO and bundled Disruptor do not redirect installation to an existing CODA
+  stack. The calling shell environment and `DESTDIR` staging remain unchanged.
 
 ## Failure Behavior
 

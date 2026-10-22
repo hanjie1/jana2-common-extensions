@@ -52,7 +52,9 @@ setenv JCE_HOME `pwd`/jce-stack
 
 The superbuild downloads pinned JANA2 `v2026.03.01` and EVIO `v6.1.2`
 releases, then builds this JCE checkout against them. By default it installs to
-`jce-stack/` in the repository root. Override that location with
+`jce-stack/` in the repository root. The EVIO compatibility patch ignores the shell's `CODA`
+environment variable for EVIO and bundled Disruptor, keeping their installation
+in the selected stack without changing your shell environment. Override that location with
 `-DCMAKE_INSTALL_PREFIX=/another/path` when configuring. An experiment can use
 the complete installation with:
 

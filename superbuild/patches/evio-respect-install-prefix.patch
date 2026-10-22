@@ -2,7 +2,16 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 7634f636..bca55125 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -52,7 +52,7 @@ elseif (DEFINED ENV{CODA})
+@@ -1,3 +1,7 @@
+ # See instructions in README.md for building and installing
+-
++
++# The JCE superbuild supplies the installation prefix for EVIO and Disruptor.
++# Ignore the shell's CODA installation when configuring this private copy.
++unset(ENV{CODA})
++
+ ### VERSION DEFINITIONS ###
+@@ -52,7 +56,7 @@ elseif (DEFINED ENV{CODA})
      set(CMAKE_INSTALL_PREFIX $ENV{CODA}/${ARCH})
      set(CMAKE_INSTALL_INCLUDEDIR $ENV{CODA}/common/include)
      message(STATUS "CMAKE_INSTALL_PREFIX reset to " ${CMAKE_INSTALL_PREFIX})
@@ -11,7 +20,7 @@ index 7634f636..bca55125 100644
      # Use default CMAKE_INSTALL_PREFIX
      set(INSTALL_DIR_DEFINED 1)
      set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/${ARCH})
-@@ -60,6 +60,8 @@ else()
+@@ -60,6 +64,8 @@ else()
      set(CMAKE_INSTALL_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
      message(STATUS "Installing to default location: ${CMAKE_INSTALL_PREFIX}")
      message(STATUS "Installing includes to default location: ${CMAKE_INSTALL_INCLUDEDIR}")
@@ -20,19 +29,19 @@ index 7634f636..bca55125 100644
  endif()
  
  # Boost libs
-@@ -107,3 +109,3 @@
+@@ -107,3 +113,3 @@
  file(GLOB CPP_LIB_FILES "src/libsrc++/*.cpp")
 -file(GLOB CPP_HEADER_FILES "src/libsrc++/*.h")
 +file(GLOB CPP_HEADER_FILES "src/libsrc++/*.h" "src/libsrc++/*.hpp")
  # C++ utility files
-@@ -147,5 +149,4 @@
+@@ -147,5 +153,4 @@
              $<INSTALL_INTERFACE:include>
 -            /usr/local/include
              ${Boost_INCLUDE_DIRS}
 -            ${LZ4_INCLUDE_DIRS}
 +            ${LZ4_INCLUDE_DIR}
              $<BUILD_INTERFACE:${DISRUPTOR_INCLUDE_DIR}>
-@@ -205,3 +206,2 @@
+@@ -205,3 +210,2 @@
          $<INSTALL_INTERFACE:include>
 -        /usr/local/include
  )
